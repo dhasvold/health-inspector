@@ -8,7 +8,10 @@ class Inspector extends React.Component {
     render() {
 
         return(
-            <h1>Hello World!</h1>
+            <div>
+                <h1>Hello World!</h1>
+                <p>It's good to have you here</p>
+            </div>
         )
     }
 }
