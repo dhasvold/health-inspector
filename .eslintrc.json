@@ -1,0 +1,66 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "extends": [
+        "standard",
+        "standard-react"
+    ],
+    "env": {
+        "browser": true,
+        "mocha": true,
+        "es6": true
+    },
+    "globals": {
+        "confirm": false,
+        "HRCPCustom": false,
+        "$": false,
+        "jQuery": false
+    },
+    "plugins": [
+        "promise",
+        "react",
+        "standard"
+    ],
+    "rules": {
+        "arrow-parens": 0,
+        "handle-callback-err": 0,
+        "space-before-function-paren": [
+            "error",
+            {
+                "anonymous": "ignore",
+                "named": "ignore"
+            }
+        ],
+        "no-template-curly-in-string": "off",
+        "no-debugger": 1,
+        "jsx-quotes": [
+            "error",
+            "prefer-double"
+        ],
+        "react/jsx-boolean-value": 0,
+        "react/jsx-no-bind": 1,
+        "react/jsx-no-duplicate-props": 2,
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "react/no-danger": 2,
+        "react/prop-types": [
+            2,
+            {
+                "ignore": [
+                    "className",
+                    "children"
+                ]
+            }
+        ],
+        "react/no-direct-mutation-state": 2,
+        "react/no-find-dom-node": 2,
+        "react/no-is-mounted": 2,
+        "react/no-render-return-value": 2,
+        "react/no-unused-prop-types": 2,
+        "no-undef": 1
+    }
+}
