@@ -7,11 +7,18 @@ import SearchBar from './components/search/SearchBar'
 
 class Inspector extends React.Component {
 
+    updateSearchTerm = (searchTerm) => {
+        // TODO: call api for data
+        console.log(`We are searching for ${searchTerm}`)
+    }
+
     render() {
 
         return(
             <div>
-                <SearchBar />
+                <SearchBar
+                    updateSearchTerm={this.updateSearchTerm}
+                />
             </div>
         )
     }

@@ -18,6 +18,11 @@ class SearchBar extends React.Component {
         })
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+    }
+
     render() {
 
         return (
@@ -42,6 +47,10 @@ class SearchBar extends React.Component {
             </div>
         )
     }
+}
+
+SearchBar.propTypes = {
+    updateSearchTerm: React.PropTypes.func.isRequired
 }
 
 export default SearchBar
