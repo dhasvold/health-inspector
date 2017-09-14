@@ -1,6 +1,7 @@
 import React from 'react'
 import './SearchBar.css'
 import 'font-awesome/css/font-awesome.css'
+import PropTypes from 'prop-types'
 
 class SearchBar extends React.Component {
 
@@ -49,8 +50,8 @@ class SearchBar extends React.Component {
     }
 }
 
-SearchBar.propTypes = {
-    updateSearchTerm: React.PropTypes.func.isRequired
+PropTypes.PropTypes = {
+    updateSearchTerm: PropTypes.func.isRequired
 }
 
 export default SearchBar
