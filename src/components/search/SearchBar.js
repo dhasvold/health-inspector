@@ -1,5 +1,6 @@
 import React from 'react'
 import './SearchBar.css'
+import 'font-awesome/css/font-awesome.css'
 
 class SearchBar extends React.Component {
 
