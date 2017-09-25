@@ -6,28 +6,46 @@ import registerServiceWorker from './registerServiceWorker';
 import SearchBar from './components/search/SearchBar'
 
 class Inspector extends React.Component {
-
-    constructor() {
+    constructor(props) {
         super()
 
         this.state = {
-            results: [],
             loading: false,
-            searched: false,
-            mapScriptLoaded: false,
-            filter: 'All'
+            searchResults: []
         }
-        this.getSearchData = this.getSearchData.bind(this)
     }
 
     updateSearchTerm = (searchTerm) => {
         // TODO: call api for data
         console.log(`We are searching for ${searchTerm}`)
-        this.getSearchData(searchTerm)
+        this.getSearchData(searchTerm).then((data) => {
+            this.setState({
+                loading: false,
+                searchResults: data
+            })
+        }).catch((e) => {
+            console.log(e.message)
+        })
     }
 
     getSearchData = async (searchTerm) => {
-        console.log(this.state.filter)
+        this.setState({ loading: true })
+        let response
+        try {
+            response = await fetch(`https://data.cityofchicago.org/resource/cwig-ma7x.json?$query=SELECT * where Contains(upper(dba_name), upper("${searchTerm}")) or Contains(upper(aka_name), upper("${searchTerm}"))`)
+            if (!response.ok) {
+                throw Error('Bad Request')
+            }
+        } catch (e) {
+            throw e
+        }
+        let data
+        try {
+            data = await response.json()
+        } catch (e) {
+            throw e
+        }
+        return data
     }
 
     render() {
