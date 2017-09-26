@@ -44,6 +44,9 @@ class SearchBar extends React.Component {
                     >
                         <i className="search-icon fa fa-search" />
                     </button>
+                    <button className="reset-button" onClick={this.handleReset}>
+                        <i className="fa fa-repeat"/>
+                    </button>
                 </form>
             </div>
         )

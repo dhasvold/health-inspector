@@ -65,7 +65,7 @@
 .reset-button {
     background-color: #D1262B;
     height: 44px;
-    margin: 1px 1px 4px 1px;
+    margin: 3px 1px 3px 1px;
     width: 100px;
     font-family: 'Open Sans', sans-serif;
     cursor: pointer;
@@ -73,7 +73,7 @@
     box-sizing: border-box;
     font-size: 1.7em;
     color: white;
-    border: none;
+    border: 1px solid #ce2932;
     border-radius: 4px;
 }
 
