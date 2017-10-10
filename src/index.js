@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+import SearchBar from './components/SearchBar'
 
 const App = () => {
 
     return (
         <div>
-            <h1>Hello there World!</h1>
-            <p>I love saying hello world</p>
+            <SearchBar />
         </div>
     )
 }
