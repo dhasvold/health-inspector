@@ -38,6 +38,7 @@
 .searchbar-container {
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -55,11 +56,6 @@
     box-sizing: border-box;
     font-size: 2em;
     color: white;
-}
-
-.search-button:hover {
-    background-color: white;
-    color: #D1262B;
 }
 
 .reset-button {
@@ -96,11 +92,6 @@
     border-radius: 4px;
     margin-right: 10px;
     cursor: pointer;
-}
-
-.reset-button:hover {
-    background-color: white;
-    color: #D1262B;
 }
 
 @media(max-width: 450px) {

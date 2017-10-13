@@ -1,0 +1,30 @@
+.search-container {
+    width: 100%;
+    height: 600px;
+    background: url(../../assets/HealthInspectorBGSmall.jpg) no-repeat center bottom;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: height .5s;
+}
+
+@media(max-width: 450px) {
+  .search-container {
+    height: 100vh;
+  }
+}
+
+.search-logo-container-hide {
+  display: none;
+  height: 0px;
+  width: 0px;
+}
+
+.search-container-small {
+    height: 150px;
+}

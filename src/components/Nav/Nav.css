@@ -1,0 +1,10 @@
+.navbar-hide {
+    display: none;
+    background: #D1262B;
+}
+
+.navbar {
+    width: 100%;
+    height: 48px;
+    background: #FBFBFB;
+}
