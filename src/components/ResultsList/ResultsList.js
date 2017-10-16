@@ -16,13 +16,15 @@ const ResultsList = (props) => {
     else if (props.results.length > 0) {
         return (
             <div className='results-list-container'>
-                { props.results.map((restaurant, i) => {
-                    if (restaurant.results.toUpperCase() !== 'Out of Business'.toUpperCase()) {
-                        return (
-                            <ListItem key={i} restaurant={restaurant}/>
-                        )
-                    }
-                })}
+                <div className='results-list'>
+                    { props.results.map((restaurant, i) => {
+                        if (restaurant.results.toUpperCase() !== 'Out of Business'.toUpperCase()) {
+                            return (
+                                <ListItem key={i} restaurant={restaurant}/>
+                            )
+                        }
+                    })}
+                </div>
             </div>
         )
     } else if (props.searched) {
