@@ -4,6 +4,7 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import Search from './components/Search/Search'
 import Nav from './components/Nav/Nav'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 class App extends React.Component {
 
@@ -52,16 +53,21 @@ class App extends React.Component {
 
     render () {
         return (
-            <div>
-                <Nav
-                    userHasSearched={this.state.searched} />
-                <Search
-                    logoSizeIsSmall={this.state.searched}
-                    updateSearchTerm={this.updateSearchTerm}
-                    resetSearch={this.resetSearch}
-                    changeFilter={this.changeFilter}
-                    filter={this.state.filter} />
-            </div>
+            <Router>
+                <div>
+                    <Nav
+                        userHasSearched={this.state.searched} />
+                    <Search
+                        logoSizeIsSmall={this.state.searched}
+                        updateSearchTerm={this.updateSearchTerm}
+                        resetSearch={this.resetSearch}
+                        changeFilter={this.changeFilter}
+                        filter={this.state.filter} />
+                    <Route exact path="/" render={() => (
+                        <h1>Results List</h1>
+                    )} />
+                </div>
+            </Router>
         )
     }
 }
