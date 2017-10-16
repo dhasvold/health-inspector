@@ -4,6 +4,7 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import Search from './components/Search/Search'
 import Nav from './components/Nav/Nav'
+import ResultsList from './components/ResultsList/ResultsList'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 class App extends React.Component {
@@ -13,18 +14,25 @@ class App extends React.Component {
 
         this.state = {
             searched: false,
+            results: [],
+            loading: false
         }
     }
 
     updateSearchTerm = (searchTerm) => {
-        console.log(`We are searching for ${searchTerm}`)
-        this.getSearchData(searchTerm).then((data) => {
-            console.log(data)
+        if (searchTerm.length === 0) {
+            return null
+        } else {
+            this.setState({loading: true})
+            this.getSearchData(searchTerm).then((data) => {
             this.setState({
-                searched: true
-            })
+                searched: true,
+                loading: false,
+                results: data
 
-        })
+            })
+         })
+        }
     }
 
     resetSearch = () => {
@@ -64,7 +72,12 @@ class App extends React.Component {
                         changeFilter={this.changeFilter}
                         filter={this.state.filter} />
                     <Route exact path="/" render={() => (
-                        <h1>Results List</h1>
+                        <ResultsList
+                            loading={this.state.loading}
+                            searched={this.state.searched}
+                            results={this.state.results}
+
+                        />
                     )} />
                     <Route path="/map/" render={() => (
                         <h1>Map</h1>
