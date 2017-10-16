@@ -66,6 +66,9 @@ class App extends React.Component {
                     <Route exact path="/" render={() => (
                         <h1>Results List</h1>
                     )} />
+                    <Route path="/map/" render={() => (
+                        <h1>Map</h1>
+                    )} />
                 </div>
             </Router>
         )
