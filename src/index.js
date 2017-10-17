@@ -15,7 +15,8 @@ class App extends React.Component {
         this.state = {
             searched: false,
             results: [],
-            loading: false
+            loading: false,
+            filter: 'All'
         }
     }
 
