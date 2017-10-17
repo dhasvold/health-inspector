@@ -6,6 +6,7 @@ import RedBadge from '../../assets/RedBadge.png'
 import YellowBadge from '../../assets/YellowBadge.png'
 import './ListItem.css'
 import NumbersLookup from '../../config/violationsLookup'
+import PropTypes from 'prop-types'
 
 class ListItem extends React.Component {
     constructor() {
@@ -13,6 +14,44 @@ class ListItem extends React.Component {
 
         this.state = {
             showMore: false
+        }
+    }
+
+    toggleShowMore = (e, showMore) => {
+        e.preventDefault()
+        this.setState({ showMore })
+    }
+
+    generateMore = () => {
+        if (this.props.restaurant.violations) {
+            const violations = this.props.restaurant.violations.split(' | ')
+            const formattedViolations = violations.map((violation) => {
+                const endOfNum = violation.indexOf('.')
+                const num = violation.substring(0, endOfNum)
+                const beginComments = violation.indexOf('Comments: ')
+                let comments = violation.substring(beginComments).toLowerCase()
+                comments = `${comments.substring(0, 1).toUpperCase()}${comments.substring(1)}`
+                return {
+                    number: num,
+                    comments: comments
+                }
+            })
+            console.log(formattedViolations)
+            return (
+                <div className="result-list-item-more">
+                    <h3>Violations</h3>
+                    {formattedViolations.map((violation, i) => (
+                        <div key={i} className="result-list-item-more-violation-container">
+                            <h4>{NumbersLookup[violation.number]}</h4>
+                            <p>{violation.comments}</p>
+                        </div>
+                    ))}
+                </div>
+            )
+        } else {
+            return (
+                <h3>No recorded violations!</h3>
+            )
         }
     }
 
@@ -37,7 +76,7 @@ class ListItem extends React.Component {
             : 'result-list-item-more-icon'
 
         return (
-            <div className={containerClasses}>
+            <div className={containerClasses} onClick={(e) => this.toggleShowMore(e, !this.state.showMore)}>
                 <div className='result-list-item'>
                     <div className='result-list-item-description'>
                         <h2>{name}</h2>
@@ -54,9 +93,14 @@ class ListItem extends React.Component {
                         <i className="fa fa-angle-down" />
                     </div>
                 </div>
+                { this.state.showMore && this.generateMore() }
             </div>
         )
 
     }
+}
+
+ListItem.propTypes = {
+    restaurant: PropTypes.object
 }
 export default ListItem
